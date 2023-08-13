@@ -32,12 +32,12 @@ export const Home = () => {
         const searchTerm = search.toLowerCase();
         return(
             movie.title.toLowerCase().includes(searchTerm) ||
-         movie.cast.some(actor => actor.toLowerCase().includes(searchTerm)) ||
+         movie?.cast?.some(actor => actor.toLowerCase().includes(searchTerm)) ||
         movie.director.toLowerCase().includes(searchTerm)
         )
     })
    
-   console.log(filterBySearch)
+  
     return(
         <>
         <div className="flex justify-between p-3 items-center">

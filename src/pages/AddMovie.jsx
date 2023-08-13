@@ -31,6 +31,8 @@ export const AddMovie = () => {
         '',
     })
 
+    
+
     const {dispatch,movieData} = useData();
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -39,6 +41,10 @@ export const AddMovie = () => {
           [name]: value,
         });
       };
+
+      const handleCast = (e) => {
+        setData({...data,cast : [e.target.value]})
+      }
       const handleClick = (e) => {
         e.preventDefault();
         dispatch({type:"ADD_MOVIES",payload:data})
@@ -68,8 +74,8 @@ export const AddMovie = () => {
                <input type="text" name="writer" value={data.writer}
                onChange={handleInputChange}  className="border border-black"
                placeholder="Please Enter writer"/>
-               <input type="text" name="cast" value={data.cast}
-               onChange={handleInputChange}  className="border border-black"
+               <input type="text" name="cast" value={data.cast[0]}
+               onChange={handleCast}  className="border border-black"
                placeholder="Please Enter cast"/>
                <input type="text" name="summary" value={data.summary}
                onChange={handleInputChange}  className="border border-black"
